@@ -21,7 +21,7 @@ public class DriverServiceImpl implements DriverService {
 
 
 
-    //    for inserting a new driver
+    //  for inserting a new driver
     @Override
     public Driver insertDriver(Driver driver) throws DriverException {
 
@@ -127,7 +127,7 @@ public class DriverServiceImpl implements DriverService {
 
 
 
-    //    view driver by his id
+    // find driver by his id
     @Override
     public Driver viewDriver(int driverId) throws DriverException {
         Optional<Driver> opt = driverRepository.findById(driverId);

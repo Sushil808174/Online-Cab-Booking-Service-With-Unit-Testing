@@ -8,14 +8,21 @@ import java.util.List;
 
 public interface UserService {
 
-    public Users registerCustomer(Users customer);
+	 // Register a customer
+    Users registerCustomer(Users customer);
 
-    public Users getUserDetailsByEmail(String email)throws UsersException;
+    // Get user details by email
+    Users getUserDetailsByEmail(String email) throws UsersException;
 
-    public List<Users> getAllUsersDetails()throws UsersException;
+    // Get all user details
+    List<Users> getAllUsersDetails() throws UsersException;
 
-    public Users updateUserDetailsByEmail(String  email, Users users)throws UsersException;
+    // Update user details by email
+    Users updateUserDetailsByEmail(String email, Users users) throws UsersException;
 
-    public Users deleteUserEmail(String email)throws UsersException;
-    public List<Users> getAllUsersDetailsByRole(String role)throws UsersException;
+    // Delete a user by email
+    Users deleteUserEmail(String email) throws UsersException;
+
+    // Get all users by role
+    List<Users> getAllUsersDetailsByRole(String role) throws UsersException;
 }

@@ -9,7 +9,9 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users, Integer> {
+	// find a user by email
     public Optional<Users> findByEmail(String email);
 
+    // find all user by roll
     public List<Users> findAllByRole(String role);
 }

@@ -9,32 +9,32 @@ import java.util.List;
 public interface DriverService {
 
 
-//    for inserting a new driver
+	// for inserting a new driver
     public Driver insertDriver(Driver driver) throws DriverException;
 
 
-//    for getting all drivers
+    // find all drivers
     public List<Driver> findAllDrivers() throws DriverException;
 
 
-//    for updating a driver
+    //  update a driver
     public Driver updateDriver(String email,Driver driver) throws DriverException;
 
-// for changing name of a driver
+    // for changing name of a driver
     public Driver changeName(String email,String name) throws DriverException;
 
-//    delete a driver for given id
+    // delete a driver for given id
     public String deleteDriver(String email) throws DriverException;
 
 
 
-//    viewing the list of best drivers
+    // find the list of best drivers
     public List<Driver> viewBestDrivers();
 
 
-//    view driver by his id
+    // find driver by his id
     public Driver viewDriver(int driverId) throws DriverException;
 
-
+    // find driver by email id
     public Driver getDriverDetailsByEmail(String email) throws DriverException;
 }

@@ -1,6 +1,5 @@
 package com.safar.controller;
 
-
 import com.safar.entity.Driver;
 import com.safar.service.DriverService;
 import jakarta.validation.Valid;
@@ -23,8 +22,8 @@ public class DriverController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
-
+    
+    
     /*
 
     {
@@ -54,88 +53,71 @@ public class DriverController {
 
 
      */
-
+    
+    
+    
+    
+    // Endpoint to insert a new driver
     @PostMapping("/driver")
-    public ResponseEntity<Driver> insertDriverHandler(@Valid @RequestBody Driver driver){
+    public ResponseEntity<Driver> insertDriverHandler(@Valid @RequestBody Driver driver) {
+        // Encode the driver's password
         driver.setPassword(passwordEncoder.encode(driver.getPassword()));
+        // Insert the driver
         Driver insertedDriver = driverService.insertDriver(driver);
         return new ResponseEntity<>(insertedDriver, HttpStatus.CREATED);
     }
 
+    // Endpoint to get all drivers
     @GetMapping("/drivers")
-    public ResponseEntity<List<Driver>> getAllDriversHandler(){
+    public ResponseEntity<List<Driver>> getAllDriversHandler() {
+        // Get all drivers
         List<Driver> drivers = driverService.findAllDrivers();
         return new ResponseEntity<>(drivers, HttpStatus.CREATED);
     }
 
-
+    // Test endpoint
     @GetMapping("/hello")
     public String testHandler() {
         return "Welcome to Spring Security";
     }
 
-
-
-    /*
-    {
-        "driverName" : "amank",
-        "mobileNo" : "1234567880",
-        "address" : "delhi",
-        "rating" : 4.5,
-        "newLocation" : "delhi",
-        "status" : "Available",
-        "car" : {
-            "carType" : "SUV",
-            "perKmRate" : 10.0
-        }
-    }
-     */
-
+    // Endpoint to update driver details by email
     @PatchMapping("/driver/{email}")
-    public ResponseEntity<Driver> updateDriverHandler(@PathVariable String email, @RequestBody Driver driver){
-        Driver updatedDriver = driverService.updateDriver(email,driver);
+    public ResponseEntity<Driver> updateDriverHandler(@PathVariable String email, @RequestBody Driver driver) {
+        // Update driver details by email
+        Driver updatedDriver = driverService.updateDriver(email, driver);
         return new ResponseEntity<>(updatedDriver, HttpStatus.CREATED);
     }
 
+    // Endpoint to update driver's name by email
     @PatchMapping("/driver/{email}/{name}")
-    public ResponseEntity<Driver> updateDriverHandler(@Valid @PathVariable String email,@PathVariable String name){
-        Driver updatedDriver = driverService.changeName(email,name);
+    public ResponseEntity<Driver> updateDriverHandler(@Valid @PathVariable String email, @PathVariable String name) {
+        // Change driver's name by email
+        Driver updatedDriver = driverService.changeName(email, name);
         return new ResponseEntity<>(updatedDriver, HttpStatus.CREATED);
     }
 
-
+    // Endpoint to delete a driver by email
     @DeleteMapping("/driver/{driverEmail}")
-    public ResponseEntity<String> deleteDriverHandler(@PathVariable String driverEmail){
+    public ResponseEntity<String> deleteDriverHandler(@PathVariable String driverEmail) {
+        // Delete driver by email
         String deletedDriver = driverService.deleteDriver(driverEmail);
         return new ResponseEntity<>(deletedDriver, HttpStatus.ACCEPTED);
     }
 
-
+    // Endpoint to view the best drivers
     @GetMapping("/driver/bestdrivers")
-    public ResponseEntity<List<Driver>> viewBestDriverListHandler(){
+    public ResponseEntity<List<Driver>> viewBestDriverListHandler() {
+        // View the best drivers
         List<Driver> viewBestDrivers = driverService.viewBestDrivers();
         return new ResponseEntity<>(viewBestDrivers, HttpStatus.ACCEPTED);
     }
 
-
-
-//    @GetMapping("/driver/{driverId}")
-//    public ResponseEntity<Driver> viewDriverHandler(@PathVariable Integer driverId){
-//        Driver viewDriverById = driverService.viewDriver(driverId);
-//        return new ResponseEntity<>(viewDriverById, HttpStatus.ACCEPTED);
-//    }
-
+    // Endpoint to view driver details by email
     @GetMapping("/driver/{driverEmail}")
-    public ResponseEntity<Driver> viewDriverByEmailHandler(@PathVariable String driverEmail){
+    public ResponseEntity<Driver> viewDriverByEmailHandler(@PathVariable String driverEmail) {
+        // Get driver details by email
         Driver viewDriverById = driverService.getDriverDetailsByEmail(driverEmail);
         return new ResponseEntity<>(viewDriverById, HttpStatus.ACCEPTED);
     }
-
-
-//    @GetMapping("/signIn")
-//    public ResponseEntity<String> getLoggedInDriverDetailsHandler(Authentication auth){
-//        System.out.println(auth); // this Authentication object having Principle object details
-//        Driver driver= driverService.getDriverDetailsByEmail(auth.getName());
-//        return new ResponseEntity<>(driver.getDriverName()+"Logged In Successfully", HttpStatus.ACCEPTED);
-//    }
 }

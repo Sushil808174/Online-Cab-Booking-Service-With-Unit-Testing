@@ -28,29 +28,27 @@ public class UserServiceImpl implements UserService {
         wallet.setStatus(WalletStatus.Active);
         wallet.setUser(users);
         users.setWallet(wallet);
-//        wallet.setWalletId(users.getUserId());
         return userRepository.save(users);
     }
 
     @Override
     public Users getUserDetailsByEmail(String email) throws UsersException {
-        return userRepository.findByEmail(email).orElseThrow(() -> new UsersException("Users Not found with Email: " + email));
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsersException("Users Not found with Email: " + email));
     }
 
     @Override
     public List<Users> getAllUsersDetails() throws UsersException {
-
         List<Users> usersList = userRepository.findAll();
-
         if (usersList.isEmpty())
-            throw new UsersException("No Users find");
-
+            throw new UsersException("No Users found");
         return usersList;
     }
 
     @Override
-    public Users updateUserDetailsByEmail(String  email, Users users) throws UsersException {
-        Users users1 = userRepository.findByEmail(email).orElseThrow(() -> new UsersException("Users Not found with Id: " + users.getUserId()));
+    public Users updateUserDetailsByEmail(String email, Users users) throws UsersException {
+        Users users1 = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsersException("Users Not found with Email: " + email));
         users1.setUsername(users.getUsername());
         users1.setPhone(users.getPhone());
         users1.setAddress(users.getAddress());
@@ -59,25 +57,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Users deleteUserEmail(String email) throws UsersException {
-        Users users = userRepository.findByEmail(email).orElseThrow(() -> new UsersException("Users Not found with Email: " + email));
+        Users users = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsersException("Users Not found with Email: " + email));
         log.info(users.toString());
         userRepository.delete(users);
         return users;
-
     }
 
     @Override
     public List<Users> getAllUsersDetailsByRole(String role) throws UsersException {
-
-        List<Users> usersList = userRepository.findAllByRole("ROLE_"+role.toUpperCase());
-
+        List<Users> usersList = userRepository.findAllByRole("ROLE_" + role.toUpperCase());
         if (usersList.isEmpty())
-            throw new UsersException("No Users find");
-
+            throw new UsersException("No Users found");
         return usersList;
     }
-
-
-
-
 }
