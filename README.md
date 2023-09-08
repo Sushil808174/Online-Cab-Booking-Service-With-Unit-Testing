@@ -8,25 +8,34 @@
  - Booking Managment Module
  - Wallet Managment Module
 
-## Backend Technologies
-- Spring Boot
-- Maven
-- Spring Data Jpa
-- Hibernate
-- Spring Security
-- Mysql
-- Lombok
-- Swagger
+## Technologies Used
+
+List the technologies and tools used in your project. You can use badges to make it visually appealing.
+
+- ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-VERSION-brightgreen)
+- ![Maven](https://img.shields.io/badge/Maven-VERSION-blue)
+- ![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-VERSION-yellow)
+- ![Hibernate](https://img.shields.io/badge/Hibernate-VERSION-orange)
+- ![Spring Security](https://img.shields.io/badge/Spring%20Security-VERSION-brightgreen)
+- ![MySQL](https://img.shields.io/badge/MySQL-VERSION-blue)
+- ![Lombok](https://img.shields.io/badge/Lombok-VERSION-orange)
+- ![Swagger](https://img.shields.io/badge/Swagger-VERSION-brightgreen)
 
 
 ## ER DIGRAM
  ![SAFAR DIAGRAM](https://github.com/akt0001c/fearful-doll-6867/assets/115461689/59fbdd3b-f22e-41c7-87c2-faf1d330cf34)
   
   
-## FEATURES
- - User can login ,signin and Book the cab.
- - Admin can manage All Users , Cab Drivers and their cab.
- 
+## Features
+
+Highlight the key features of your cab booking application.
+
+- User registration and login
+- Cab booking and management
+- Driver management
+- Admin dashboard
+- Payment processing
+- ...
 
 ## API Root Endpoint
 
