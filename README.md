@@ -1,4 +1,4 @@
-# Online-Cab-Booking-Service-With-Unit-Testing
+# Online Cab Booking Application
 
 # This is an Online cab booking application called Safar Which provide rest api services for booking cab and for managing users with two roles admin and User with interactive api services.
 ## Modules
