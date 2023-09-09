@@ -35,7 +35,6 @@ Highlight the key features of your cab booking application.
 - Driver management
 - Admin dashboard
 - Payment processing
-- ...
 
 ## API Root Endpoint
 
